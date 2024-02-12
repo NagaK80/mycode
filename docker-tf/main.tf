@@ -19,7 +19,7 @@ resource "docker_image" "nginx" {
   keep_locally = true       // keep image after "destroy"
 }
 
-// Module to create the container using the nginx image 
+/* Module to create the container using the nginx image 
 resource "docker_container" "nginx" {
   image = docker_image.nginx.image_id
   name  = "tutorial"
@@ -28,5 +28,20 @@ resource "docker_container" "nginx" {
     external = 2224
   }
 } 
+*/
+
+resource "docker_container" "nginx" {
+  image = docker_image.nginx.image_id
+  name  = var.continer_name
+  ports {
+    internal = 80
+    external = 2224
+  }
+}
+
+variable "container_name" {
+   description ="This will be the name of container being created" 
+   default = "docker_first_container" 
+}
 
 ## End
