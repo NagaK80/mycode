@@ -1,0 +1,12 @@
+- hosts: localhost
+  tasks: 
+
+  - name: Basic deploy of service
+    community.general.terraform: 
+      project_path: /home/student/mycode/ansibledemo
+      state: present
+      force_init: true
+    register: results 
+
+  - debug: 
+      var: results
