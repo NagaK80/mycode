@@ -18,7 +18,7 @@ provider "null" {
 
 /* a list of local variables */
 locals {
-  avengers = { "ironman" = "hero"
+  alpha = { "ironman" = "hero"
     "captain america" = "hero"
     "thanos"          = "villain"
     "venom"           = "anti-hero"
@@ -27,8 +27,8 @@ locals {
 
 
 /* The null_resource implements the standard resource lifecycle but takes no more action */
-resource "null_resource" "avengers" {
-  for_each = local.avengers // local is not a typo, locals.avengers would be incorrect
+resource "null_resource" "bravo" {
+  for_each = local.alpha // local is not a typo, locals.avengers would be incorrect
   /* triggers allows specifying a random set of values that when
      changed will cause the resource to be replaced */
   triggers = {
@@ -39,6 +39,6 @@ resource "null_resource" "avengers" {
 }
 
 /* We want these outputs */
-output "avengers" {
-  value = null_resource.avengers
+output "charlie" {
+  value = null_resource.bravo
 }
